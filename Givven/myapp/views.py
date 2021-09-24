@@ -7,6 +7,7 @@ from .models import User
 
 # Create your views here.
 
+
 def check_password(checkpw,originalpw):
     if checkpw==originalpw:
         return True
@@ -39,8 +40,8 @@ def login_view(req):
 
 
 def logout_view(request):
-    logout(request)
-    return redirect("/")
+    request.session.clear()
+    return redirect('login')
 
 def register_view(req):
     if req.method == 'POST':
@@ -75,11 +76,11 @@ def read_organi(req):
 def cnt_coin(user):
     total_coin = 0
     if user.plan == "simple" :
-        total_coin = 10
+        total_coin = 5
     elif user.plan == "premium":
-        total_coin = 20
+        total_coin = 16
     elif user.plan == "nobless":
-        total_coin = 50
+        total_coin = 28
     return total_coin
 def create_user_choice(req):
     user_pk = req.session.get('user')

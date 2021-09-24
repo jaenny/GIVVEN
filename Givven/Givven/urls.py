@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('orga/',views.read_organi),
+    path('',views.read_organi),
     path('give/',views.create_user_choice),
     path('give/update',views.update_user_choice),
     path('login/', views.login_view, name="login"),
