@@ -1,0 +1,62 @@
+/* Nav_login.html */
+.nav-login {
+  width: 375px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(235, 234, 234, 1);
+}
+
+.nav-login img {
+  display: block;
+  width: 145px;
+  height: 40px;
+}
+
+/* Nav.html */
+.nav {
+  width: 375px;
+  height: 110px;
+  border-bottom: 1px solid rgba(235, 234, 234, 1);
+  padding: 0 20px;
+}
+
+.logo-login-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.logo-login-box a {
+  display: block;
+  text-decoration: none;
+}
+
+.login {
+  color: rgba(100, 111, 124, 1);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 0;
+}
+
+.header a {
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.header a div {
+  color: rgba(174, 180, 191, 1);
+  font-size: 14px;
+}
+
+.header a div.menu-active {
+  color: rgba(49, 185, 127, 1);
+  font-weight: 700;
+}
