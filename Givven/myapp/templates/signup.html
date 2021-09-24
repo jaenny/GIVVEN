@@ -1,10 +1,21 @@
+{% extends 'common/Nav_login.html' %}
+
+{% load static %}
+
+{% block extrahead %}
+<title>회원가입</title>
+<link rel="stylesheet" href="../static/css/account.css">
+{% endblock %}
+
+{% block content %}
 <form action=""method="POST">
     {%csrf_token%}
     
-    name:<input type="text" name = "name">
-    email : <input type="text" name = "email">
+    name:<input type="text" name = "name"><br>
+    email : <input type="text" name = "email"><br>
     pw:<input type="text" name = "password">
 
 
     <button type="submit" id="test">저장</button>
 </form>
+{% endblock %}
