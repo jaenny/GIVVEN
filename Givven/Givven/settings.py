@@ -73,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Givven.wsgi.application'
 
-AUTH_USER_MODEL = 'myapp.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

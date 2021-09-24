@@ -1,8 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from django.contrib.auth.models import AbstractUser
 # Create your models here.
-class User(AbstractUser):
+class User(models.Model):
     PLAN_CHOICES = (
         ('simple','simple'),
         ('premium', 'premium'),

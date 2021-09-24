@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404, redirect, render
 import datetime
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .forms import RegisterForm
 from .models import User
 
 # Create your views here.
