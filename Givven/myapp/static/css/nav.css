@@ -34,6 +34,12 @@
   text-decoration: none;
 }
 
+.logo-login-box a img {
+  display: block;
+  width: 110px;
+  height: 30px;
+}
+
 .login {
   color: rgba(100, 111, 124, 1);
   font-weight: 700;

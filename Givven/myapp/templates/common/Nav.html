@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/reset.css">
-  <link rel="stylesheet" href="../../static/css/nav.css">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/nav.css' %}">
   {% block extrahead %}
   {% endblock %}
 </head>
@@ -16,12 +16,12 @@
   <div class="container">
     <div class="nav">
       <div class="logo-login-box">
-        <a class="logo" href="#"><img src="../../static/images/logo.svg" alt=""></a>
+        <a class="logo" href="#"><img src="{% static 'images/logo.svg' %}" alt=""></a>
         <a class="login" href="#">로그인/회원가입</a>
       </div>
       <div class="header">
         <a href="">
-          <div class="organization menu-active">기부단체</div>
+          <div class="organization">기부단체</div>
         </a>
         <a href="">
           <div class="donate">기부하기</div>
