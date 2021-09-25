@@ -26,11 +26,6 @@ body {
 
 a {
   text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  color: black;
 }
 
 .submit-btn {
@@ -50,8 +45,11 @@ a:hover {
   outline: 0;
 
   color: #ffffff;
+  pointer-events: none;
 }
 
 .submit-btn.activate {
   background: #53e3ac;
+  cursor: pointer;
+  pointer-events: all;
 }

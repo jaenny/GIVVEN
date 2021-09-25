@@ -4,7 +4,12 @@
 <link rel="stylesheet" href="{% static 'css/all_orga.css'%}" />
 {% endblock %} {% block content %}
 <p class="title">기부단체 이야기</p>
+{%if user_pk %}
 <p><span class="bold">{{user.name}}</span>님의 도움을 기다리고 있는</p>
+{%endif%} {%if not user_pk%}
+<p>기쁜과 함께하고 있는</p>
+{%endif%}
+
 <p>
   <span class="bold">{{total_orga_num}}</span>개의 사회단체 이야기를 들어주세요!
 </p>

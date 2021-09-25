@@ -67,7 +67,6 @@ def register_view(req):
         'res_data': res_data,
     }
     return render(req,'signup.html',context)
-      
 
 def select_plan(request):
     user_pk = request.session.get('user')
@@ -119,16 +118,30 @@ def create_user_choice(req):
         total_coin = cnt_coin(nuser)
         
         if req.method == 'POST':
-            list = req.POST.getlist("orga-coin[]")
-            for i in range(0,len(list)): 
-                if i==0:
-                    f_date = datetime.datetime.now()
+            return redirect('/')
+            f_date = datetime.datetime.now()
+            if int(req.POST['greenpeace']) != 0:
                 user_choice = User_Choiced()
                 user_choice.user = nuser
-                user_choice.orga = Organization.objects.get(name=list[i]['orga'])
-                user_choice.coin = list[i]['coin']
+                user_choice.orga = Organization.objects.get(name="그린피스")
+                user_choice.coin = req.POST['greenpeace']
                 user_choice.date = f_date
                 user_choice.save()
+            if req.POST['unicef'] != 0:
+                user_choice = User_Choiced()
+                user_choice.user = nuser
+                user_choice.orga = Organization.objects.get(name="유니세프")
+                user_choice.coin = req.POST['unicef']
+                user_choice.date = f_date
+                user_choice.save()
+            if req.POST['WWF'] !=0:
+                user_choice = User_Choiced()
+                user_choice.user = nuser
+                user_choice.orga = Organization.objects.get(name="세계자연기금")
+                user_choice.coin = req.POST['WWF']
+                user_choice.date = f_date
+                user_choice.save()
+            redirect('/')
     context={
             'data' : total_coin,
             'user_pk' : user_pk,

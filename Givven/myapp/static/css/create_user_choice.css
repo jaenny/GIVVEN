@@ -3,6 +3,7 @@
   font-weight: 700;
 }
 
+/*타이틀 부분*/
 .content-title {
 }
 .content-title h1 {
@@ -18,4 +19,126 @@
   color: #1b1c1f;
   font-size: 14px;
   margin: 0;
+}
+
+.menu-coin {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 44px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+.menu-coin span {
+  font-size: 12px;
+}
+.coin {
+  font-weight: 700;
+  color: #31b97f;
+}
+.menu-coin p {
+  margin: 0;
+}
+.menu-coin p a {
+  font-weight: 700;
+  font-size: 12px;
+
+  color: #31b97f;
+}
+.card {
+  font-size: 12px;
+  color: #31b97f;
+  height: 80px;
+  padding: 14px;
+  background: #eafff7;
+  border-radius: 10px;
+  margin-top: 9px;
+  margin-bottom: 14px;
+}
+input {
+  display: block;
+  width: 75px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #31b97f;
+  outline: none;
+}
+.orga-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+}
+
+.orga {
+  width: 164px;
+  height: 78px;
+  background: #ffffff;
+  border: 1px solid #e9ebec;
+  margin: 3px;
+  border-radius: 5px;
+  display: flex;
+  padding: 9px;
+}
+.orga-image-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.orga-image-box img {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.change-count {
+  margin-top: 14px;
+}
+.count {
+  margin: 0 13px;
+}
+.orga-choice {
+  margin-left: 9px;
+}
+.orga-choice span {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.count-btn {
+  width: 20px;
+  height: 20px;
+  background: #f8f9fd;
+  box-shadow: 0.2px 0.2px 1px 0.1px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}
+.minus {
+  line-height: 15px;
+}
+
+#test {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  margin: 20px;
+  width: 345px;
+}
+/* 로그인이 되어있지 않을 때 */
+#not-login-img-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#not-login-img-wrapper img {
+  margin-top: 66px;
+  width: 279px;
+}
+
+#goto-login {
+  margin-top: 60px;
 }

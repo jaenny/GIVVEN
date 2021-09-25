@@ -26,6 +26,7 @@ input {
   margin-bottom: 12px;
   background-position: center;
   background-size: cover;
+  cursor: pointer;
 }
 .card.activate {
   filter: drop-shadow(2px 2px 2px #31b97f);
@@ -33,6 +34,11 @@ input {
 .card:nth-child(3) {
   margin-top: 20px;
 }
+
+#exPlan {
+  display: none;
+}
+
 .select {
   display: none;
   height: 29px;
@@ -52,7 +58,7 @@ input {
   display: block;
 }
 .select::after {
-  content: '';
+  content: "";
   background-color: white;
   height: 20px;
   width: 20px;
@@ -62,13 +68,13 @@ input {
   transform: rotate(45deg);
 }
 .standard {
-  background-image: url('../images/plan/standard.png');
+  background-image: url("../images/plan/standard.png");
 }
 .premium {
-  background-image: url('../images/plan/premium.png');
+  background-image: url("../images/plan/premium.png");
 }
 .noblesse {
-  background-image: url('../images/plan/noblesse.png');
+  background-image: url("../images/plan/noblesse.png");
 }
 .plan-title {
   font-weight: 700;
