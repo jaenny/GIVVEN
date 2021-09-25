@@ -3,6 +3,7 @@
   font-weight: 700;
 }
 
+/*타이틀 부분*/
 .content-title {
 }
 .content-title h1 {
@@ -18,4 +19,19 @@
   color: #1b1c1f;
   font-size: 14px;
   margin: 0;
+}
+
+/* 로그인이 되어있지 않을 때 */
+#not-login-img-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#not-login-img-wrapper img {
+  margin-top: 66px;
+  width: 279px;
+}
+
+#goto-login {
+  margin-top: 60px;
 }
