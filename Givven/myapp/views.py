@@ -71,8 +71,18 @@ def select_plan(request):
 
 def read_organi(req):
     orga = Organization.objects.all()
+    user_pk = req.session.get('user')
+    
+    if user_pk : 
+        user = User.objects.get(pk=user_pk)
+    elif not user_pk:
+        user={}
+        user['name']="기부천사 "
     context = {
-        'data' : orga
+        'data' : orga,
+        'user' : user,
+        'total_orga_num' : len(orga),
+
     }
     return render(req,'all_orga.html',context)
     

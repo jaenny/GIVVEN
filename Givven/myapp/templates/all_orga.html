@@ -10,37 +10,20 @@
 
 {% block content %}
   <p class="title">기부단체 이야기</p>
-  <p><span class="bold">{{user}}</span>님의 도움을 기다리고 있는</p>
+  <p><span class="bold">{{user.name}}</span>님의 도움을 기다리고 있는</p>
   <p><span class="bold">{{total_orga_num}}</span>개의 사회단체 이야기를 들어주세요!</p>
-
-  <div class="card" style="margin-top : 24px;">
-    <div class="img-box">
-      <img src="{% static 'images/orga/greenpeace.png' %}" alt="">
+  <div class = "cards">
+    {% for orga in data %}
+    <div class="card" style="margin-top : 24px;">
+      <div class="img-box">
+        <img src={{orga.thumbnail.url}} alt="">
+      </div>
+      <div class="info-box">
+        <p class="orga-name">{{orga.name}}</p>
+        <p class="orga-info">{{orga.context}}</p>
+        <p class="more-info"><a href="{{orga.link}}">이야기 들으러 가기 ></a></p>
+      </div>
     </div>
-    <div class="info-box">
-      <p class="orga-name">그린피스</p>
-      <p class="orga-info">1971년 태어난 독립적인 국제환경단체</p>
-      <p class="more-info"><a href="https://likelionjs.notion.site/8146bcbcf2c94c7ab0702b2364409eab">이야기 들으러 가기 ></a></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="img-box">
-      <img src="{% static 'images/orga/unicef.jpg' %}" alt="">
-    </div>
-    <div class="info-box">
-      <p class="orga-name">유니세프</p>
-      <p class="orga-info">1946년 ‘차별 없는 구호’의 정신으로 전 세계 어린이를 돕기 위해 설립된 유엔기구</p>
-      <p class="more-info"><a href="https://likelionjs.notion.site/d161213e7e594621808a7a9ebde6abf9">이야기 들으러 가기 ></a></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="img-box">
-      <img src="{% static 'images/orga/WWF.jpg' %}" alt="">
-    </div>
-    <div class="info-box">
-      <p class="orga-name">세계자연기금</p>
-      <p class="orga-info">자연 보전을 위해 설립된 국제 비정부 기구</p>
-      <p class="more-info"><a href="https://likelionjs.notion.site/WWF-674666beebc742afb5419a9250fa448c">이야기 들으러 가기 ></a></p>
-    </div>
+    {%endfor%}
   </div>
   {% endblock %}

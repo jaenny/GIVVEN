@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   color: #1b1c1f;
   font-size: 14px;
 }
@@ -18,7 +18,8 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   background-color: #ffffff;
-  position: relative;
+  position: absolute;
+  left: calc(50% - 187.5px);
   padding: 0 20px;
   padding-top: 143px;
 }
@@ -30,4 +31,27 @@ a {
 
 a:hover {
   color: black;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 50px;
+  font-weight: bold;
+  font-size: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 8px;
+  background: #c5c8ce;
+
+  border: 0;
+  outline: 0;
+
+  color: #ffffff;
+}
+
+.submit-btn.activate {
+  background: #53e3ac;
 }
