@@ -71,14 +71,11 @@ def register_view(req):
 
 def select_plan(request):
     user_pk = request.session.get('user')
-    if not user_pk:
-        return redirect('/login')
-    elif user_pk:
-        if request.method == 'POST':
-            user = get_object_or_404(User,pk=user_pk)
-            user.plan = request.POST['plan']
-            user.save()
-            return redirect('/')
+    if request.method == 'POST':
+        user = get_object_or_404(User,pk=user_pk)
+        user.plan = request.POST['plan']
+        user.save()
+        return redirect('/')
     return render(request,'select_plan.html')
 
 def read_organi(req):
