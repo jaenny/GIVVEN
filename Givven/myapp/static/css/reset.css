@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   color: #1b1c1f;
   font-size: 14px;
 }
@@ -18,7 +18,8 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   background-color: #ffffff;
-  position: relative;
+  position: absolute;
+  left: calc(50% - 187.5px);
   padding: 0 20px;
   padding-top: 143px;
 }

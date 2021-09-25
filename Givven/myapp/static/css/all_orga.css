@@ -28,6 +28,14 @@ p {
   margin-bottom: 14px;
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
+.card:first-child {
+  margin-top: 24px;
+}
+
 .img-box img {
   display: block;
   width: 90px;
