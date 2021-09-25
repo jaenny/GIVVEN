@@ -67,22 +67,22 @@ def register_view(req):
         'res_data': res_data,
     }
     return render(req,'signup.html',context)
-      
 
 def select_plan(request):
     user_pk = request.session.get('user')
-    if not user_pk:
-        return redirect('/login')
-    elif user_pk:
-        user = User.objects.get(pk=user_pk)
-        if request.method == 'POST':
-            user = get_object_or_404(User,pk=user_pk)
+    context={
+        'user_pk' : user_pk,
+    }
+    if request.method == 'POST':
+        user = get_object_or_404(User,pk=user_pk)
+        if request.POST['plan']:
             user.plan = request.POST['plan']
             user.save()
+            return redirect('create_user_choice')
+        else :
+            user.plan =""
+            user.save()
             return redirect('/')
-    context={
-        'user' : user,
-    }
     return render(request,'select_plan.html',context)
 
 def read_organi(req):
@@ -119,23 +119,44 @@ def create_user_choice(req):
     if user_pk : 
         nuser = User.objects.get(pk=user_pk)
         user_choiced = User_Choiced.objects.filter(user=nuser).order_by('-date')[:1]
-        if user_choiced:
-            delete_date=user_choiced[0].date
-            if datetime.datetime.now().day-delete_date.day <= 30:
-                User_Choiced.objects.filter(user=nuser,date=delete_date).delete()
-        total_coin = cnt_coin(nuser)
-        
+        if nuser.plan != "" :
+            total_coin = cnt_coin(nuser)
+        else :
+            total_coin = 0
+
         if req.method == 'POST':
-            list = req.POST.getlist("orga-coin[]")
-            for i in range(0,len(list)): 
-                if i==0:
-                    f_date = datetime.datetime.now()
+            nuser.plan=""
+            nuser.save()
+            if user_choiced:
+                delete_date=user_choiced[0].date
+                if datetime.datetime.now().day-delete_date.day <= 30:
+                    User_Choiced.objects.filter(user=nuser,date=delete_date).delete()
+            f_date = datetime.datetime.now()
+            if req.POST['greenpeace'] != '' and int(req.POST['greenpeace']) != 0:
                 user_choice = User_Choiced()
                 user_choice.user = nuser
-                user_choice.orga = Organization.objects.get(name=list[i]['orga'])
-                user_choice.coin = list[i]['coin']
+                user_choice.orga = Organization.objects.get(name="그린피스")
+                user_choice.coin = int(req.POST['greenpeace'])
+                total_coin -= user_choice.coin
                 user_choice.date = f_date
                 user_choice.save()
+            if req.POST['unicef'] !='' and int(req.POST['unicef']) != 0:
+                user_choice = User_Choiced()
+                user_choice.user = nuser
+                user_choice.orga = Organization.objects.get(name="유니세프")
+                user_choice.coin = int(req.POST['unicef'])
+                total_coin -= user_choice.coin
+                user_choice.date = f_date
+                user_choice.save()
+            if req.POST['WWF'] != '' and int(req.POST['WWF']) != 0:
+                user_choice = User_Choiced()
+                user_choice.user = nuser
+                user_choice.orga = Organization.objects.get(name="세계자연기금")
+                user_choice.coin = int(req.POST['WWF'])
+                total_coin -= user_choice.coin
+                user_choice.date = f_date
+                user_choice.save()
+            return redirect('/')
     context={
             'data' : total_coin,
             'user_pk' : user_pk,
