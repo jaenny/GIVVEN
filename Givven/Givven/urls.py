@@ -22,7 +22,11 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.read_organi),
+<<<<<<< HEAD
     path('give/',views.create_user_choice),
+=======
+    path('create_user_choice/',views.create_user_choice,name="create_user_choice"),
+>>>>>>> 553140cce4006ff916b558c6495ac7d23157c771
     path('login/', views.login_view, name="login"),
     path('logout/', views.logout_view, name="logout"),
     path('register/', views.register_view, name="signup"),

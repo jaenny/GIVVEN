@@ -44,7 +44,7 @@ def login_view(req):
 
 def logout_view(request):
     request.session.clear()
-    return redirect('login')
+    return redirect('/')
 
 def register_view(req):
     if req.method == 'POST':
@@ -53,7 +53,7 @@ def register_view(req):
         user.name = req.POST['name']
         user.password = req.POST['password']
         user.save()
-        return redirect('/')
+        return redirect('login')
     return render(req,'signup.html')
       
 
@@ -82,6 +82,7 @@ def read_organi(req):
         'data' : orga,
         'user' : user,
         'total_orga_num' : len(orga),
+        'user_pk' : user_pk,
 
     }
     return render(req,'all_orga.html',context)
@@ -98,9 +99,8 @@ def cnt_coin(user):
 
 def create_user_choice(req):
     user_pk = req.session.get('user')
-    if not user_pk :
-        return redirect('/login')
-    elif user_pk : 
+    total_coin=0
+    if user_pk : 
         nuser = User.objects.get(pk=user_pk)
         user_choiced = User_Choiced.objects.filter(user=nuser).order_by('-date')[:1]
         if user_choiced:
@@ -108,9 +108,7 @@ def create_user_choice(req):
             if datetime.datetime.now().day-delete_date.day <= 30:
                 User_Choiced.objects.filter(user=nuser,date=delete_date).delete()
         total_coin = cnt_coin(nuser)
-        context={
-            'data' : total_coin
-        }
+        
         if req.method == 'POST':
             list = req.POST.getlist("orga-coin[]")
             for i in range(0,len(list)): 
@@ -122,4 +120,8 @@ def create_user_choice(req):
                 user_choice.coin = list[i]['coin']
                 user_choice.date = f_date
                 user_choice.save()
-        return render(req,'create_user_choice.html',context)
+    context={
+            'data' : total_coin,
+            'user_pk' : user_pk,
+        }
+    return render(req,'create_user_choice.html',context)

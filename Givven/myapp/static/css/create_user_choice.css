@@ -1,0 +1,21 @@
+.header a div.donate {
+  color: rgba(49, 185, 127, 1);
+  font-weight: 700;
+}
+
+.content-title {
+}
+.content-title h1 {
+  font-weight: bold;
+  font-size: 20px;
+
+  color: #31b97f;
+
+  margin: 0;
+}
+
+.content-title p {
+  color: #1b1c1f;
+  font-size: 14px;
+  margin: 0;
+}

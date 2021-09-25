@@ -1,6 +1,4 @@
 var cards = document.querySelectorAll('.card');
-// var selects = document.querySelectorAll('.select');
-// var plan = document.querySelector('#plan').value;
 
 cards.forEach(function (el) {
   el.addEventListener('click', changeValue);
