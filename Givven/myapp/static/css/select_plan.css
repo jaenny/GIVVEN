@@ -103,10 +103,13 @@ input {
   text-align: right;
   margin-bottom: 60px;
 }
-.unsubscribe a {
+.unsubscribe button {
   font-size: 12px;
   color: #ff002a;
   text-align: right;
+  border: 0;
+  outline: 0;
+  background-color: #ffffff;
 }
 .container {
   padding-bottom: 40px;
