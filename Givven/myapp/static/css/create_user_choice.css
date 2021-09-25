@@ -54,7 +54,13 @@
   margin-bottom: 14px;
 }
 input {
-  display: none;
+  display: block;
+  width: 75px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #31b97f;
+  outline: none;
 }
 .orga-wrapper {
   display: flex;
@@ -85,7 +91,6 @@ input {
 }
 
 .change-count {
-  display: flex;
   margin-top: 14px;
 }
 .count {
