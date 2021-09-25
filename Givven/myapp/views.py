@@ -44,7 +44,7 @@ def login_view(req):
 
 def logout_view(request):
     request.session.clear()
-    return redirect('login')
+    return redirect('/')
 
 def register_view(req):
     if req.method == 'POST':
@@ -53,7 +53,7 @@ def register_view(req):
         user.name = req.POST['name']
         user.password = req.POST['password']
         user.save()
-        return redirect('/')
+        return redirect('login')
     return render(req,'signup.html')
       
 
@@ -82,6 +82,7 @@ def read_organi(req):
         'data' : orga,
         'user' : user,
         'total_orga_num' : len(orga),
+        'user_pk' : user_pk,
 
     }
     return render(req,'all_orga.html',context)

@@ -16,13 +16,18 @@
         <a class="logo" href="/"
           ><img src="{% static 'images/logo.svg' %}" alt=""
         /></a>
-        <a class="login" href="#">로그인/회원가입</a>
+        {%if not user_pk %}
+        <a class="login" href="{%url 'login' %}">로그인/회원가입</a>
+        {%endif%}
+        {%if user_pk %}
+        <a class="logout" href="{%url 'logout'%}">로그아웃</a>
+        {%endif%}
       </div>
       <div class="header">
-        <a href="">
+        <a href="/">
           <div class="organization">기부단체</div>
         </a>
-        <a href="">
+        <a  href="{%url 'create_user_choice' %}">
           <div class="donate">기부하기</div>
         </a>
       </div>
