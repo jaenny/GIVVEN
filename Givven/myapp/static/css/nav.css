@@ -16,17 +16,18 @@
 
 /* Nav.html */
 .nav {
-  width: 375px;
+  width: 335px;
   height: 110px;
   border-bottom: 1px solid rgba(235, 234, 234, 1);
-  padding: 0 20px;
+  position: fixed;
+  top: 0;
 }
 
 .logo-login-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .logo-login-box a {
