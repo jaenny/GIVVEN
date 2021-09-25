@@ -70,6 +70,9 @@ def register_view(req):
 
 def select_plan(request):
     user_pk = request.session.get('user')
+    context={
+        'user_pk' : user_pk,
+    }
     if request.method == 'POST':
         user = get_object_or_404(User,pk=user_pk)
         if request.POST['plan']:
@@ -80,7 +83,7 @@ def select_plan(request):
             user.plan =""
             user.save()
             return redirect('/')
-    return render(request,'select_plan.html')
+    return render(request,'select_plan.html',context)
 
 def read_organi(req):
     orga = Organization.objects.all()
