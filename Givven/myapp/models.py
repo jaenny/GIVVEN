@@ -3,7 +3,7 @@ from django.db.models.deletion import CASCADE
 # Create your models here.
 class User(models.Model):
     PLAN_CHOICES = (
-        ('simple','simple'),
+        ('standard','standard'),
         ('premium', 'premium'),
         ('nobless', 'nobless'),
     )

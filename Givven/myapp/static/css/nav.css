@@ -2,10 +2,15 @@
 .nav-login {
   width: 375px;
   height: 60px;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  z-index: 99;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid rgba(235, 234, 234, 1);
+  left: calc(50% - 187.5px);
 }
 
 .nav-login img {
@@ -16,18 +21,21 @@
 
 /* Nav.html */
 .nav {
-  width: 335px;
+  width: 375px;
   height: 110px;
+  background-color: #ffffff;
   border-bottom: 1px solid rgba(235, 234, 234, 1);
   position: fixed;
   top: 0;
+  z-index: 99;
+  padding: 20px;
+  left: calc(50% - 187.5px);
 }
 
 .logo-login-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
 }
 
 .logo-login-box a {
@@ -50,7 +58,7 @@
 .header {
   display: flex;
   justify-content: flex-start;
-  margin: 20px 0;
+  margin-top: 20px;
 }
 
 .header a {
