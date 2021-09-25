@@ -15,13 +15,13 @@
 <div class="menu-coin">
   <div class="coin">
     <span>잔여코인</span>
-    <span class="coin">{{ data }}</span>
+    <span class="coin" id="coin">{{ data }}</span>
     <img src="{% static 'images/coin.svg' %}" alt="">
   </div>
   <p><a href="{%url 'select_plan' %}">기부플랜설정 ></a></p>
 </div>
 <div class="card">
-잔여 코인을 모두 소비할 때 까지 업체를 선택해주세요!<br>모두 소비를 해야 선택 완료가 가능해집니다!<br>이 선택은 결제일 이전에 언제든지 변경 가능합니다!<br>
+  잔여 코인을 모두 소비할 때 까지 업체를 선택해주세요!<br>모두 소비를 해야 선택 완료가 가능해집니다!<br>이 선택은 결제일 이전에 언제든지 변경 가능합니다!<br>
 </div>
 <form action="" type="POST">
   <div class="orga-wrapper">
@@ -74,4 +74,48 @@
 
 <a class="submit-btn activate" id="goto-login" href="/login">로그인/회원가입</a>
 
-{%endif%} {% endblock %}
+{%endif%}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script var data = data>
+  var coins = [0, 0, 0]
+  var data = document.getElementById('coin').innerHTML;
+
+  $("#greenpeace").on("propertychange change keyup paste input", function () {
+    var currentVal = $(this).val();
+    coins[0] = currentVal;
+
+    if (parseInt(coins[0])+parseInt(coins[1])+parseInt(coins[2]) === parseInt(data) ){
+      document.getElementById('test').classList.add('activate');
+    }
+    else{
+      document.getElementById('test').classList.remove('activate');
+    }
+  });
+  $("#unicef").on("propertychange change keyup paste input", function () {
+    var currentVal = $(this).val();
+    coins[1] = currentVal;
+    if (parseInt(coins[0])+parseInt(coins[1])+parseInt(coins[2]) === parseInt(data) ){
+      document.getElementById('test').classList.add('activate');
+    }
+    else{
+      document.getElementById('test').classList.remove('activate');
+    }
+  });
+  $("#WWF").on("propertychange change keyup paste input", function () {
+    var currentVal = $(this).val();
+    coins[2] = currentVal;
+    if (parseInt(coins[0])+parseInt(coins[1])+parseInt(coins[2]) === parseInt(data) ){
+      document.getElementById('test').classList.add('activate');
+    }
+    else{
+      document.getElementById('test').classList.remove('activate');
+    }
+  });
+
+  console.log(coins[0]+coins[1]+coins[2]);
+  if (coins[0]+coins[1]+coins[2] === data ){
+    document.getElementById('test').classList.add('activate');
+  }
+</script>
+{% endblock %}
