@@ -54,6 +54,11 @@
   font-weight: 700;
   font-size: 14px;
 }
+.login:hover {
+  color: #31b97f;
+  font-weight: 700;
+  font-size: 14px;
+}
 
 .logout {
   color: rgba(100, 111, 124, 1);

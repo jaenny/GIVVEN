@@ -10,7 +10,11 @@
 <!-- <div class="row mt-5">
   <div class="col-12">{{error}}</div>
 </div> -->
-
+{%if res_data.error %}
+  <script type="text/javascript">
+    alert(`{{res_data.error}}`);
+  </script>
+{%endif%}
 <form method="post" class="account-form">
   {% csrf_token %}
   <div class="form-group">

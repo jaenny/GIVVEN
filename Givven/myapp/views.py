@@ -39,7 +39,10 @@ def login_view(req):
                     res_data['error'] = "아이디 혹은 비밀번호가 틀렸습니다."
             elif not nuser:
                 res_data['error'] = "아이디 혹은 비밀번호가 틀렸습니다."
-        return render(req,'login.html',res_data) #응답 데이터 res_data 전달
+        context={
+            'res_data' : res_data
+        }
+        return render(req,'login.html',context) #응답 데이터 res_data 전달
 
 
 def logout_view(request):
@@ -47,14 +50,23 @@ def logout_view(request):
     return redirect('/')
 
 def register_view(req):
+    res_data={}
     if req.method == 'POST':
         user = User()
-        user.email = req.POST['email']
+        checkemail = req.POST['email']
         user.name = req.POST['name']
         user.password = req.POST['password']
-        user.save()
-        return redirect('login')
-    return render(req,'signup.html')
+        check = User.objects.filter(email=checkemail)[:1]
+        if check:
+            res_data['error'] ="이미 있는 이메일입니다."
+        elif not check:
+            user.email = checkemail
+            user.save()
+            res_data['success'] = "GIVVEN의 회원이 되신것을 축하드립니다"
+    context={
+        'res_data': res_data,
+    }
+    return render(req,'signup.html',context)
       
 
 def select_plan(request):
@@ -62,12 +74,16 @@ def select_plan(request):
     if not user_pk:
         return redirect('/login')
     elif user_pk:
+        user = User.objects.get(pk=user_pk)
         if request.method == 'POST':
             user = get_object_or_404(User,pk=user_pk)
             user.plan = request.POST['plan']
             user.save()
             return redirect('/')
-    return render(request,'select_plan.html')
+    context={
+        'user' : user,
+    }
+    return render(request,'select_plan.html',context)
 
 def read_organi(req):
     orga = Organization.objects.all()

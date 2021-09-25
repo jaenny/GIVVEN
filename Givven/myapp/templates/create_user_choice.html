@@ -65,8 +65,13 @@
     기쁜에 가입하고 <br />
     기쁜 기부를 함께 해보아요!
   </h1>
-  <p>기쁜에 오신 것을 환영해요!</p>
+  <p>로그인하고 기부를 해보세요!</p>
 </div>
-{%endif%}
-<script src="../static/js/create_user_choice.js"></script>
-{% endblock %}
+
+<div id="not-login-img-wrapper">
+  <img src="{% static 'images/givven_img1.png' %}" alt="" />
+</div>
+
+<a class="submit-btn activate" id="goto-login" href="/login">로그인/회원가입</a>
+
+{%endif%} {% endblock %}
