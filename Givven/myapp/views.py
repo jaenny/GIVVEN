@@ -74,12 +74,16 @@ def select_plan(request):
     if not user_pk:
         return redirect('/login')
     elif user_pk:
+        user = User.objects.get(pk=user_pk)
         if request.method == 'POST':
             user = get_object_or_404(User,pk=user_pk)
             user.plan = request.POST['plan']
             user.save()
             return redirect('/')
-    return render(request,'select_plan.html')
+    context={
+        'user' : user,
+    }
+    return render(request,'select_plan.html',context)
 
 def read_organi(req):
     orga = Organization.objects.all()
