@@ -1,0 +1,23 @@
+<!-- 기부할 단체 설정 -->
+{% extends 'common/Nav.html' %} {% load static %} {% block extrahead %}
+<title>기부하기</title>
+<link rel="stylesheet" href="{% static 'css/create_user_choice.css'%}" />
+{% endblock %} {% block content %}
+<!--로그인 되어있을 때-->
+<div class="content-title">
+  <h1>기부하기</h1>
+  <p>
+    기부 플랜을 설정하면 설정에 따른 코인을 얻을 수 있어요!<br />
+    받은 코인을 기부하고 싶은 단체에 나눠주세요!
+  </p>
+</div>
+
+<!--로그인 되어있지 않을 때-->
+<div class="content-title">
+  <h1>
+    기쁜에 가입하고 <br />
+    기쁜 기부를 함께 해보아요!
+  </h1>
+  <p>기쁜에 오신 것을 환영해요!</p>
+</div>
+{% endblock %}
