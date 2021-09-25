@@ -7,7 +7,6 @@ from .models import User
 
 # Create your views here.
 
-select_plan_update=False
 
 def check_password(checkpw,originalpw):
     if checkpw==originalpw:
@@ -73,10 +72,14 @@ def select_plan(request):
     user_pk = request.session.get('user')
     if request.method == 'POST':
         user = get_object_or_404(User,pk=user_pk)
-        user.plan = request.POST['plan']
-        user.save()
-        select_plan_update=True
-        return redirect('create_user_choice')
+        if request.POST['plan']:
+            user.plan = request.POST['plan']
+            user.save()
+            return redirect('create_user_choice')
+        else :
+            user.plan =""
+            user.save()
+            return redirect('/')
     return render(request,'select_plan.html')
 
 def read_organi(req):
