@@ -1,3 +1,8 @@
+.header a div.donate {
+  color: rgba(49, 185, 127, 1);
+  font-weight: 700;
+}
+
 .content-title {
 }
 .content-title h1 {
