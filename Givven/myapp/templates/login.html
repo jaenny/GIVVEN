@@ -17,8 +17,8 @@
     <label for="user_id">이메일</label>
     <input
       type="text"
-      id="user_id"
-      name="user_id"
+      id="user-id"
+      name="user-id"
       placeholder="이메일을 입력해주세요"
     />
   </div>
@@ -26,8 +26,8 @@
     <label for="user_pw">비밀번호</label>
     <input
       type="password"
-      id="user_pw"
-      name="user_pw"
+      id="user-pw"
+      name="user-pw"
       placeholder="비밀번호를 입력해주세요"
     />
   </div>
@@ -40,26 +40,4 @@
   <span>아직 회원이 아닌가요?</span>
   <a href="/register">회원가입</a>
 </div>
-
-<!-- <div class="row mt-5">
-  <div class="col-12">
-    <form method="POST" action=".">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="user_id">사용자 id</label>
-        <input type="text" class="form-control" id="user_id" name="user_id" />
-      </div>
-      <div class="form-group">
-        <label for="user_id">비밀번호</label>
-        <input
-          type="password"
-          class="form-control"
-          id="user_pw"
-          name="user_pw"
-        />
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-</div> -->
 {% endblock %}
