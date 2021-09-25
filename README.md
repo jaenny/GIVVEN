@@ -8,3 +8,4 @@
 7. pip install pillow  
 8. python manage.py makemigrations  
 9. python manage.py migrate  
+10. pip install whitenoise
