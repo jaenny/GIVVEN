@@ -34,6 +34,7 @@ input {
   margin-top: 20px;
 }
 .select {
+  display: none;
   height: 29px;
   width: 108px;
   position: absolute;
@@ -47,6 +48,9 @@ input {
   line-height: 27px;
   padding-right: 13px;
 }
+.select-activate {
+  display: block;
+}
 .select::after {
   content: '';
   background-color: white;
@@ -57,13 +61,13 @@ input {
   top: 5px;
   transform: rotate(45deg);
 }
-.standard-box {
+.standard {
   background-image: url('../images/plan/standard.png');
 }
-.premium-box {
+.premium {
   background-image: url('../images/plan/premium.png');
 }
-.noblesse-box {
+.noblesse {
   background-image: url('../images/plan/noblesse.png');
 }
 .plan-title {
