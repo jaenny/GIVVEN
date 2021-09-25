@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.read_organi),
     path('give/',views.create_user_choice),
-    path('give/update',views.update_user_choice),
     path('login/', views.login_view, name="login"),
     path('logout/', views.logout_view, name="logout"),
     path('register/', views.register_view, name="signup"),

@@ -18,8 +18,8 @@ def login_view(req):
     if req.method=="GET":
         return render(req,'login.html')
     elif req.method=="POST":
-        user_id = req.POST.get('user_id')
-        user_pw = req.POST.get('user_pw')
+        user_id = req.POST.get('user-id')
+        user_pw = req.POST.get('user-pw')
 
         res_data={}
         if not (user_id and user_pw):
@@ -27,15 +27,18 @@ def login_view(req):
 
         else:
             #기존(DB)에 있는 Fuser 모델과 같은 값인 걸 가져온다.
-            user = User.objects.get(email=user_id) #(필드명=값)
-
-            #비밀번호가 맞는지 확인한다.
-            if check_password(user_pw,user.password):
-                #응답 데이터 세션에 값 추가. 수신측 쿠키에 저징됨
-                req.session['user'] = user.id 
-                return redirect('/')
-            else:
-                res_data['error'] = "비밀번호가 틀렸습니다."
+            nuser = User.objects.filter(email=user_id) #(필드명=값)
+            if nuser:
+                user=nuser[0]
+                #비밀번호가 맞는지 확인한다.
+                if check_password(user_pw,user.password):
+                    #응답 데이터 세션에 값 추가. 수신측 쿠키에 저징됨
+                    req.session['user'] = user.id 
+                    return redirect('/')
+                else:
+                    res_data['error'] = "아이디 혹은 비밀번호가 틀렸습니다."
+            elif not nuser:
+                res_data['error'] = "아이디 혹은 비밀번호가 틀렸습니다."
         return render(req,'login.html',res_data) #응답 데이터 res_data 전달
 
 
@@ -75,61 +78,38 @@ def read_organi(req):
     
 def cnt_coin(user):
     total_coin = 0
-    if user.plan == "simple" :
+    if user.plan == "standard" :
         total_coin = 5
     elif user.plan == "premium":
         total_coin = 16
     elif user.plan == "nobless":
         total_coin = 28
     return total_coin
-def create_user_choice(req):
-    user_pk = req.session.get('user')
-    if not user_pk :
-        return redirect('/login')
-    elif user_pk : 
-        user = User.objects.get(pk=user_pk)
-        total_coin = cnt_coin(user)
-        context={
-            'data' : total_coin
-        }
-        if req.method == 'POST':
-            list = req.POST.getlist("orga_coin[]")
-            for i in range(0,len(list),2): 
-                if i==0:
-                    f_date = datetime.datetime.now()
-                user_choice = User_Choiced()
-                user_choice.user = user
-                user_choice.orga = Organization.objects.get(name=list[i])
-                user_choice.coin = list[i+1]
-                user_choice.date = f_date
-                user_choice.save()
-        return render(req,'create_user_choice.html',context)
 
-def update_user_choice(req):
+def create_user_choice(req):
     user_pk = req.session.get('user')
     if not user_pk :
         return redirect('/login')
     elif user_pk : 
         nuser = User.objects.get(pk=user_pk)
         user_choiced = User_Choiced.objects.filter(user=nuser).order_by('-date')[:1]
-        delete_date=user_choiced[0].date
-        User_Choiced.objects.filter(user=nuser,date=delete_date).delete()
+        if user_choiced:
+            delete_date=user_choiced[0].date
+            if datetime.datetime.now().day-delete_date.day <= 30:
+                User_Choiced.objects.filter(user=nuser,date=delete_date).delete()
         total_coin = cnt_coin(nuser)
         context={
             'data' : total_coin
         }
         if req.method == 'POST':
-            list = req.POST.getlist("orga_coin[]")
-            for i in range(0,len(list),2): 
+            list = req.POST.getlist("orga-coin[]")
+            for i in range(0,len(list)): 
                 if i==0:
                     f_date = datetime.datetime.now()
                 user_choice = User_Choiced()
                 user_choice.user = nuser
-                user_choice.orga = Organization.objects.get(name=list[i])
-                user_choice.coin = list[i+1]
+                user_choice.orga = Organization.objects.get(name=list[i]['orga'])
+                user_choice.coin = list[i]['coin']
                 user_choice.date = f_date
                 user_choice.save()
         return render(req,'create_user_choice.html',context)
-
-
-
